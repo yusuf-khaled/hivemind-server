@@ -1,2 +1,1 @@
-# import * from "scalar-type.graphql"
-# import Query.*, Mutation.* from "todo-list.graphql"
+# import Query.*, Mutation.* from "hivemind.graphql"

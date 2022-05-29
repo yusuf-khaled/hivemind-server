@@ -1,0 +1,29 @@
+input CreateTeamInput {
+  name: String!
+  created_by: String!
+}
+
+type Team {
+  id: ID!
+  name: String!
+  created_at: String
+  updated_at: String
+  deleted_at: String
+}
+
+type HiveMind {
+  id: ID!
+  name: String!
+  created_at: String
+  updated_at: String
+  deleted_at: String
+}
+
+type Query {
+  team(memberId: String): Team!
+  hiveminds(memberId: String): Team!
+}
+
+type Mutation {
+  createTeam(item: CreateTeamInput): Team!
+}

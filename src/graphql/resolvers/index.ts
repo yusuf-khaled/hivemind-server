@@ -30,14 +30,5 @@ export function getResolver() {
     };
   });
 
-  // Register scalar types
-  const scalarTypes = readdirSync('./src/graphql/resolvers/types');
-  scalarTypes.forEach(name => {
-    const fileName = `${path.resolve(__dirname, 'types')}/${name}`;
-    const module = require(fileName);
-    const key = Object.keys(module.default)[0];
-    resolver[key] = module.default[key];
-  });
-
   return resolver;
 }

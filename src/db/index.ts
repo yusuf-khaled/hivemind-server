@@ -1,9 +1,13 @@
-import { connect } from './connect';
 import { DB } from '../types/db';
-const pool = connect();
+// const clientGetter = new ClientGetter();
+// const client = clientGetter.getDbClient();
 
 export const db: DB = {
   query: (text: string, params: any, callback: void) => {
-    return pool.query(text, params, callback)
+    // console.log('client in query: ', client);
+    // console.log('pool.options.client in query: ', pool.options.client);
+    console.log('params: ', params);
+    console.log('text: ', text);
+    // return client.one(text, params);
   },
 };
