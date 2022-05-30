@@ -4,6 +4,18 @@ Boilerplate: https://github.com/davidnguyen179/typescript-graphql-postgres-boile
 
 ## Running
 
-`npm i --force` (too lazy to resolve some conflicts, doesn't seem to affect anything)
-`npm run db` will spin up and seed DB
-`npm run dev`
+Run `npm i --force` (had some dependency resolution errors I didn't want to spend time debugging).
+
+Create a `.env` file at the root containing the following:
+
+```
+POSTGRES_USER=docker
+POSTGRES_PASSWORD=docker
+POSTGRES_HOST=localhost
+POSTGRES_DB=hivemind
+POSTGRES_PORT=5432
+```
+
+Make sure Docker is running on your computer. Then spin up and seed the Postgres instance with `npm run db`.
+
+Then run the API with `npm run dev`. This will spin up the GraphQL server at `localhost:4000`.
