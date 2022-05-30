@@ -1,13 +1,18 @@
-import { BrainWaveType, BrainWaveStatus, BrainWave, CreateBrainWaveInput } from './brainwave';
+import { BrainWaveType, BrainWaveStatus, BrainWave, CreateBrainWaveInput, formatBrainwaveForGraphql, TransmitBrainWaveInput } from './brainwave';
 import { Content, CreateContentInput, EditContentInput } from './content';
-import { HiveMind, CreateHiveMindInput } from './hivemind';
-import { Member, CreateMemberInput } from './member';
-import { Team, CreateTeamInput } from './team';
+import { HiveMind, CreateHiveMindInput, formatHiveMindForDb, formatHiveMindForGraphql } from './hivemind';
+import { Member } from './member';
+import { Team, TeamMember, CreateTeamInput, formatTeamForDb, formatTeamForGraphql } from './team';
+
+interface UntypedObject {
+  [key: string]: any
+}
 
 export {
-  BrainWaveType, BrainWaveStatus, BrainWave, CreateBrainWaveInput,
+  BrainWaveType, BrainWaveStatus, BrainWave, CreateBrainWaveInput, formatBrainwaveForGraphql, TransmitBrainWaveInput,
   Content, CreateContentInput, EditContentInput,
-  HiveMind, CreateHiveMindInput,
-  Member, CreateMemberInput,
-  Team, CreateTeamInput,
+  HiveMind, CreateHiveMindInput, formatHiveMindForDb, formatHiveMindForGraphql,
+  Member,
+  Team, TeamMember, CreateTeamInput, formatTeamForDb, formatTeamForGraphql,
+  UntypedObject,
 };

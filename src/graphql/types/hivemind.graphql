@@ -1,29 +1,98 @@
-input CreateTeamInput {
+type TeamMember {
+  id: ID!
   name: String!
-  created_by: String!
+  email: String!
+  title: String!
+  avatarUrl: String!
 }
 
 type Team {
   id: ID!
   name: String!
-  created_at: String
-  updated_at: String
-  deleted_at: String
+  members: [TeamMember]!
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
 }
 
 type HiveMind {
   id: ID!
   name: String!
-  created_at: String
-  updated_at: String
-  deleted_at: String
+  teamId: String!
+  teamName: String!
+  createdBy: String!
+  createdByAvatarUrl: String
+  code: String!
+  goal: String!
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+}
+
+enum BrainWaveType {
+  reflection
+  spike
+  teaching
+  practice
+}
+
+enum BrainWaveStatus {
+  todo
+  wip
+  review
+  done
+}
+
+type BrainWave {
+  id: ID!
+  code: String!
+  createdBy: String!
+  createdByAvatarUrl: String
+  assignedTo: String!
+  assignedToAvatarUrl: String
+  dueAt: String
+  hiveMindId: String!
+  title: String!
+  description: String!
+  type: BrainWaveType!
+  typeIconUrl: String
+  status: BrainWaveStatus!
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+}
+
+input CreateHiveMindInput {
+  name: String!
+  goal: String!
+  code: String!
+  createdBy: String!
+  teamId: String!
+}
+
+input CreateBrainWaveInput {
+  hiveMindId: String!
+  creator: String!
+  assignee: String!
+  dueAt: String!
+  title: String!
+  description: String!
+  type: BrainWaveType!
+  status: BrainWaveStatus!
 }
 
 type Query {
   team(memberId: String): Team!
-  hiveminds(memberId: String): Team!
+  hiveminds(memberId: String): [HiveMind]!
+  brainwaves(memberId: String): [BrainWave]!
 }
 
 type Mutation {
-  createTeam(item: CreateTeamInput): Team!
+  createHiveMind(input: CreateHiveMindInput): HiveMind!
+  createBrainWave(input: CreateBrainWaveInput): BrainWave!
+  transmitBrainWave(
+    brainWaveId: String
+    content: String
+    creator: String
+  ): BrainWave!
 }
